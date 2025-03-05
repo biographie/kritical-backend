@@ -1,0 +1,5 @@
+Django
+djangorestframework
+boto3
+gunicorn
+psycopg2-binary
