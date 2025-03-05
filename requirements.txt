@@ -3,3 +3,5 @@ djangorestframework
 boto3
 gunicorn
 psycopg2-binary
+whitenoise
+environs[django]
