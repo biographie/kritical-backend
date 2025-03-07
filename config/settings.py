@@ -42,6 +42,8 @@ INSTALLED_APPS = [
     "django.contrib.messages",
     "django.contrib.staticfiles",
     "whitenoise",
+    "rest_framework",
+    "rest_framework.authtoken",
     "users",
     "organizations",
 ]
@@ -139,3 +141,15 @@ DEFAULT_AUTO_FIELD = "django.db.models.BigAutoField"
 AUTH_USER_MODEL = "users.CustomUser"
 
 CSRF_TRUSTED_ORIGINS = ["https://*.herokuapp.com"]
+REST_FRAMEWORK = {
+    "DEFAULT_PERMISSION_CLASSES": [
+        "rest_framework.permissions.IsAuthenticated",
+    ],
+    "DEFAULT_AUTHENTICATION_CLASSES": [
+        "rest_framework.authentication.SessionAuthentication",
+        "rest_framework.authentication.TokenAuthentication",
+    ],
+}
+REST_AUTH = {
+    "LOGIN_SERIALIZER": "users.serializers.CustomLoginSerializer",
+}

@@ -5,3 +5,4 @@ gunicorn
 psycopg2-binary
 whitenoise
 environs[django]
+dj-rest-auth

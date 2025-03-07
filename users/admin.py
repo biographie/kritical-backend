@@ -11,16 +11,19 @@ class CustomUserAdmin(UserAdmin):
     model = CustomUser
     list_display = (
         "email",
+        "organization",
         "is_staff",
         "is_active",
     )
     list_filter = (
         "email",
+        "organization",
         "is_staff",
         "is_active",
     )
     fieldsets = (
         (None, {"fields": ("email", "password")}),
+        ("Organization", {"fields": ("organization",)}),
         (
             "Permissions",
             {"fields": ("is_staff", "is_active", "groups", "user_permissions")},
@@ -35,6 +38,7 @@ class CustomUserAdmin(UserAdmin):
                     "email",
                     "password1",
                     "password2",
+                    "organization",
                     "is_staff",
                     "is_active",
                     "groups",
