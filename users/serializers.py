@@ -1,8 +1,13 @@
-from dj_rest_auth.serializers import LoginSerializer
 from rest_framework import serializers
+from django.contrib.auth import authenticate
 
 
-class CustomLoginSerializer(LoginSerializer):
-    username = None
+class CustomUserSerializer(serializers.Serializer):
     email = serializers.EmailField(required=True)
-    password = serializers.CharField(style={"input_type": "password"})
+    password = serializers.CharField(write_only=True)
+
+    def validate(self, data):
+        user = authenticate(**data)
+        if user and user.is_active:
+            return user
+        raise serializers.ValidationError("Incorrect credentials!")

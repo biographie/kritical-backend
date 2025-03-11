@@ -5,4 +5,6 @@ gunicorn
 psycopg2-binary
 whitenoise
 environs[django]
-dj-rest-auth
+django-cors-headers
+djangorestframework-simplejwt
+drf-api-logger
